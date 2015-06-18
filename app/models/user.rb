@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :username, :presence => true, :allow_blank => false
+
+  has_many :projects
 end
