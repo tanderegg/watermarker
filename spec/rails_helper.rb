@@ -55,4 +55,11 @@ RSpec.configure do |config|
   # Devise helpers
   config.include Devise::TestHelpers, type: :controller
   config.extend ControllerMacros, :type => :controller
+
+  # Removes files created by Carrierwave in Test
+  config.after(:each) do
+    if Rails.env.test? || Rails.env.cucumber?
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+    end 
+  end
 end
