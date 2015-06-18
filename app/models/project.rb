@@ -1,5 +1,8 @@
+# encoding: utf-8
+
 class Project < ActiveRecord::Base
   belongs_to :user
+  has_many :images
 
   validates :user, :presence => true, :allow_blank => false
   validates :name, :presence => true, :allow_blank => false

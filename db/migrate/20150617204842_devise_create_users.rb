@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       ## Link Creation Studio credentials
       t.string   :client_id
-      t.string   :client_sercret
+      t.string   :client_secret
 
       t.timestamps null: false
     end

@@ -41,6 +41,10 @@ gem 'devise'
 ### File uploader
 gem 'carrierwave'
 
+### UI Gems
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 20150618043111) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "client_id"
-    t.string   "client_sercret"
+    t.string   "client_secret"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end

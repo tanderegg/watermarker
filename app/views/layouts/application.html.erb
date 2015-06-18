@@ -8,10 +8,22 @@
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div id="main-container" class="container-fluid">
+	<header class="row">
+		<% if user_signed_in? %>
+		<div style="float: right">
+			Hi, <%= current_user.username %>!
+		</div>
+		<% end %>
+		<h2>Watermarker</h2>
+	</header>
 
-<%= yield %>
-
+	<div class="row">
+		<div class="notice"><%= notice %></div>
+		<% if alert %>
+		<div class="alert"><%= alert %></div>
+		<% end %>
+		<%= yield %>
+	</div>
 </body>
 </html>

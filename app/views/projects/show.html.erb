@@ -1,0 +1,23 @@
+<h1 class="divider"><%= @project.name %></h1>
+
+<div class="col-xs-2">
+	<p><%= image_tag @project.logo, size: "128x128" %></p>
+
+	<label>Project Description</label>
+	<p><%= @project.description %></p>
+
+	<label>Project Client</label>
+	<p><%= @project.client %></p>
+
+	<p><%= link_to "Edit this project", edit_project_url(@project) %></p>
+</div>
+
+<div class="col-xs-10">
+<h2 class="divider">Images</h2>
+<p><%= link_to "New Image", new_project_image_url(@project) %></p>
+<ul>
+<% for image in @images %>
+	<li><%= image.name %>: <%= image.height %>x<%= image.width %></li>
+<% end %>
+</ul>
+</div>

@@ -1,0 +1,32 @@
+<h1>New Image</h1>
+
+<%= form_for [@project, @image], multipart: true do |f| %>
+
+	<% if @image.errors.any? %>
+		<div id="error_explanation">
+			<h2>
+				<%= pluralize(@image.errors.count, "error") %> prohibited this project from being saved:
+			</h2>
+
+			<ul>
+				<% @image.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+
+	<div class="field">
+		<%= f.label :original %><br />
+		<%= f.file_field :original %>
+	</div>
+
+	<div class="field">
+		<%= f.submit %>
+	</div>
+<% end %>
