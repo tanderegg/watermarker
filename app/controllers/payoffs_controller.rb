@@ -1,0 +1,2 @@
+class PayoffsController < ApplicationController
+end
