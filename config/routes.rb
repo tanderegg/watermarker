@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :regions
+  resources :payoffs
+  resources :payoffs
   resources :images
   devise_for :users
 

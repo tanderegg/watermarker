@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618021059) do
+ActiveRecord::Schema.define(version: 20150618043111) do
 
   create_table "images", force: :cascade do |t|
     t.integer  "project_id"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20150618021059) do
 
   add_index "images", ["project_id"], name: "index_images_on_project_id"
 
+  create_table "payoffs", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "name",           default: "", null: false
+    t.string   "url",            default: "", null: false
+    t.string   "payoff_api_url"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "payoffs", ["project_id"], name: "index_payoffs_on_project_id"
+
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "name",        default: "", null: false
@@ -37,6 +48,27 @@ ActiveRecord::Schema.define(version: 20150618021059) do
   end
 
   add_index "projects", ["user_id"], name: "index_projects_on_user_id"
+
+  create_table "regions", force: :cascade do |t|
+    t.integer  "image_id"
+    t.integer  "payoff_id"
+    t.string   "name",                 default: "", null: false
+    t.integer  "left",                 default: 0,  null: false
+    t.integer  "top",                  default: 0,  null: false
+    t.integer  "width",                default: 0,  null: false
+    t.integer  "height",               default: 0,  null: false
+    t.string   "original",             default: ""
+    t.string   "watermark",            default: ""
+    t.integer  "watermark_strength",   default: 5,  null: false
+    t.integer  "watermark_resolution", default: 50, null: false
+    t.string   "link_api_url",         default: ""
+    t.string   "trigger_api_url",      default: ""
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "regions", ["image_id"], name: "index_regions_on_image_id"
+  add_index "regions", ["payoff_id"], name: "index_regions_on_payoff_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "username",               default: "", null: false
