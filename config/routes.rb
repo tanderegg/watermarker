@@ -7,6 +7,10 @@ Rails.application.routes.draw do
       resources :regions do
         resource :payoffs
       end
+
+      member do
+        get 'download'
+      end
     end
   end
 

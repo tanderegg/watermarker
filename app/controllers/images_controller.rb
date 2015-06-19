@@ -21,6 +21,31 @@ class ImagesController < ApplicationController
 		end
 	end
 
+	def edit
+		@image = @project.images.find(params[:id])
+	end
+
+	def update
+		@image = @project.iamges.find(params[:id])
+	
+		if @image.update_attribtes(image_params)
+			redirect_to [@project, @image]
+		else
+			render :edit
+		end
+	end
+
+	def delete
+		@image = @project.images.find(params[:id])
+		@image.destroy
+		redirect_to @project
+	end
+
+	def download
+		@image = @project.images.find(params[:id])
+		send_file(@image.original.path, filename: File.basename(@image.original.path), type: "image/jpg")
+	end
+
 	private
 
 	    def image_params

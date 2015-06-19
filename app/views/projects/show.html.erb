@@ -17,7 +17,7 @@
 <p><%= link_to "New Image", new_project_image_url(@project) %></p>
 <ul>
 <% for image in @images %>
-	<li><%= image.name %>: <%= image.height %>x<%= image.width %></li>
+	<li><%= link_to image.name, project_image_url(@project, image) %>: <%= image.height %>x<%= image.width %></li>
 <% end %>
 </ul>
 </div>

@@ -18,6 +18,25 @@ class RegionsController < ApplicationController
     end
   end
 
+  def edit
+    @region = @image.regions.find(params[:id])
+  end
+
+  def update
+    @region = @image.regions.find(params[:id])
+
+    if @region.update_attributes(region_params) and @region.payoff.update_attributes(payoff_params)
+      redirect_to [@project, @image]
+    else
+      render :edit
+    end
+  end
+
+  def delete
+    @region = @image.regions.find(params[:id]).destroy
+    redirect_to [@project, @image]
+  end
+
   private
 
     def region_params
