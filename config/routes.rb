@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :images do
       resources :regions do
-        resources :payoffs
+        resource :payoffs
       end
     end
   end

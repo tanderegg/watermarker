@@ -1,11 +1,17 @@
 class ImagesController < ApplicationController
+	
+	before_filter :get_project
+
+	def show
+		@image = @project.images.find(params[:id])
+		@regions = @image.regions
+	end
+
 	def new
-		@project = Project.find(params[:project_id])
 		@image = @project.images.build
 	end
 
 	def create
-		@project = Project.find(params[:project_id])
 		@image = @project.images.build(image_params)
 
 		if @image.save
@@ -19,5 +25,9 @@ class ImagesController < ApplicationController
 
 	    def image_params
 	      params.require(:image).permit(:name, :original, :project)
+	    end
+
+	    def get_project
+	    	@project = Project.find(params[:project_id])
 	    end
 end

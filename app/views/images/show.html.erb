@@ -1,0 +1,19 @@
+<h1 class="divider">Image: <%= @image.name %></h1>
+
+<div class="col-xs-3">
+  <h2 class="divider">Regions</h2>
+
+  <%= link_to "New Region", new_project_image_region_path(@project, @image) %>
+
+  <ul>
+  <% for region in @regions %>
+  <li>
+    <%= region.name %> - Start: <%= region.top %>, <%= region.left %> - Size: <%= region.width %>, <%= region.height %>
+  </li>
+  <% end %>
+  </ul>
+</div>
+
+<div class="col-xs-9">
+  <p><%= image_tag @image.original.url %></p>
+</div>

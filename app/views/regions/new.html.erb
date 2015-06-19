@@ -1,0 +1,73 @@
+<h1>Region Details</h1>
+
+<%= form_for [@project, @image, @region] do |f| %>
+
+<% if @region.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@region.errors.count, "error") %> prohibited this region from being saved:
+    </h2>
+
+    <ul>
+      <% @region.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="field">
+  <%= f.label :name %><br />
+  <%= f.text_field :name %>
+</div>
+
+<h3>Payoff Details</h3>
+<%= f.fields_for :payoff do |payoff_form| %>
+  <div class="field">
+    <%= payoff_form.label :name %>
+    <%= payoff_form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= payoff_form.label :destination %>
+    <%= payoff_form.text_field :url %>
+  </div>  
+<% end %>
+
+<h3>Dimensions</h3>
+<div class="field">
+  <%= f.label :left %><br />
+  <%= f.text_field :left %>
+</div>
+
+<div class="field">
+  <%= f.label :top %><br />
+  <%= f.text_field :top %>
+</div>
+
+<div class="field">
+  <%= f.label :width %><br />
+  <%= f.text_field :width %>
+</div>
+
+<div class="field">
+  <%= f.label :height %><br />
+  <%= f.text_field :height %>
+</div>
+
+<h3>Watermark Details</h3>
+<div class="field">
+  <%= f.label :watermark_strength %><br />
+  <%= f.text_field :watermark_strength %>
+</div>
+
+<div class="field">
+  <%= f.label :watermark_resolution %><br />
+  <%= f.text_field :watermark_resolution %>
+</div>
+
+<div class="field">
+  <%= f.submit %>
+</div>
+
+<% end %>
